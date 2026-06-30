@@ -35,10 +35,6 @@ margin-bottom:20px;
 box-shadow:0 5px 15px rgba(0,0,0,.2);
 }
 
-.match h2{
-margin-top:0;
-}
-
 button{
 background:#0b8f52;
 color:white;
@@ -47,10 +43,21 @@ padding:12px 20px;
 border-radius:10px;
 cursor:pointer;
 font-size:16px;
+margin-top:10px;
 }
 
-button:hover{
-background:#087241;
+input{
+padding:10px;
+margin-top:10px;
+width:100%;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+.result{
+margin-top:10px;
+font-weight:bold;
+color:green;
 }
 </style>
 
@@ -67,22 +74,50 @@ background:#087241;
 <div class="match">
 <h2>🇸🇦 السعودية × 🇲🇽 المكسيك</h2>
 <p>📅 18 يونيو</p>
-<button>توقع الآن</button>
+
+<input id="name1" placeholder="اكتب اسمك">
+<button onclick="predict('السعودية','المكسيك','result1','name1')">توقع الآن</button>
+
+<div id="result1" class="result"></div>
 </div>
 
 <div class="match">
 <h2>🇧🇷 البرازيل × 🇫🇷 فرنسا</h2>
 <p>📅 20 يونيو</p>
-<button>توقع الآن</button>
+
+<input id="name2" placeholder="اكتب اسمك">
+<button onclick="predict('البرازيل','فرنسا','result2','name2')">توقع الآن</button>
+
+<div id="result2" class="result"></div>
 </div>
 
 <div class="match">
 <h2>🇦🇷 الأرجنتين × 🇪🇸 إسبانيا</h2>
 <p>📅 22 يونيو</p>
-<button>توقع الآن</button>
+
+<input id="name3" placeholder="اكتب اسمك">
+<button onclick="predict('الأرجنتين','إسبانيا','result3','name3')">توقع الآن</button>
+
+<div id="result3" class="result"></div>
 </div>
 
 </div>
+
+<script>
+function predict(team1, team2, resultId, nameId){
+let name = document.getElementById(nameId).value;
+
+if(name === ""){
+alert("اكتب اسمك أول!");
+return;
+}
+
+let winner = Math.random() < 0.5 ? team1 : team2;
+
+document.getElementById(resultId).innerHTML =
+name + " توقع أن الفائز هو: " + winner;
+}
+</script>
 
 </body>
 </html>
